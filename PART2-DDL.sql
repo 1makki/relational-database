@@ -24,7 +24,7 @@ product_type_id int,
 created_at datetime default current_timestamp,
 updated_at datetime default current_timestamp,
 constraint fk_Product_type foreign key (product_type_id) 
-references product_types(id)
+references product_types(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 create table Product_types(
@@ -61,9 +61,9 @@ payment_method_id int,
 created_at datetime,
 updated_at datetime,
 constraint fk_user foreign key (user_id) 
-references users(id),
+references users(id) ON DELETE CASCADE ON UPDATE CASCADE,
 constraint fk_payment_method foreign key (payment_method_id) 
-references payment_methods(id)
+references payment_methods(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 create table transaction_details(
@@ -75,9 +75,9 @@ qty int,
 created_at datetime,
 updated_at datetime,
 constraint fk_transaction foreign key (transaction_id) 
-references transactions(id),
+references transactions(id) ON DELETE CASCADE ON UPDATE CASCADE,
 constraint fk_product foreign key (product_id) 
-references products(id)
+references products(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 show tables from alta_online_shop;
@@ -120,7 +120,7 @@ id int primary key,
 user_id int,
 adress varchar(255),
 constraint fk_user_id foreign key (user_id) 
-references users(id)
+references users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- 7c
@@ -130,7 +130,7 @@ user_id int,
 payment_method_id int,
 detail varchar(255),
 constraint fk_user_detail foreign key (user_id) 
-references users(id),
+references users(id) ON DELETE CASCADE ON UPDATE CASCADE,
 constraint fk_payment_method_detail foreign key (payment_method_id) 
-references payment_methods(id)
+references payment_methods(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
